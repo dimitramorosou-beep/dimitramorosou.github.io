@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Δήμητρα Μόροσου — Κοινωνική Ανθρωπολόγος</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #F1ECDE;
+    --paper-deep: #E7DFCB;
+    --ink: #24231F;
+    --ink-soft: #4A473E;
+    --river: #2E6B74;
+    --river-deep: #1E4A51;
+    --ochre: #C68A3E;
+    --wine: #7A2E2E;
+    --line: rgba(36,35,31,0.14);
+    --max: 920px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Source Sans 3', sans-serif;
+    font-weight:400;
+    line-height:1.65;
+    font-size:17px;
+    overflow-x:hidden;
+    background-image:
+      radial-gradient(rgba(36,35,31,0.035) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    color:var(--ink);
+    letter-spacing:-0.01em;
+  }
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing:0.02em;
+  }
+  a{color:var(--river-deep);}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+
+  /* ---------- river signature element ---------- */
+  .river-track{
+    position:fixed;
+    left: max(18px, calc(50% - 500px));
+    top:0; bottom:0;
+    width:44px;
+    pointer-events:none;
+    z-index:1;
+  }
+  .river-track svg{width:100%; height:100%;}
+  .river-path{
+    fill:none;
+    stroke:var(--river);
+    stroke-width:2.4;
+    stroke-linecap:round;
+    opacity:0.55;
+  }
+  @media (max-width: 880px){ .river-track{display:none;} }
+
+  /* ---------- header / nav ---------- */
+  header{
+    position:sticky; top:0; z-index:10;
+    background:rgba(241,236,222,0.86);
+    backdrop-filter: blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:16px; padding-bottom:16px;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-size:1.05rem;
+    font-weight:500;
+  }
+  .navlinks{display:flex; gap:26px; list-style:none;}
+  .navlinks a{
+    color:var(--ink-soft);
+    text-decoration:none;
+    font-size:0.86rem;
+    font-family:'IBM Plex Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    border-bottom:1px solid transparent;
+    padding-bottom:2px;
+    transition:border-color 0.2s, color 0.2s;
+  }
+  .navlinks a:hover{ color:var(--river-deep); border-color:var(--river-deep); }
+  @media (max-width:640px){ .navlinks{gap:14px;} .navlinks a{font-size:0.72rem;} }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:96px 0 88px;
+    position:relative;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.82rem;
+    color:var(--river-deep);
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:26px; height:1px;
+    background:var(--river-deep);
+    display:inline-block;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem, 5vw, 3.4rem);
+    line-height:1.12;
+    max-width:14ch;
+  }
+  .hero .lede{
+    margin-top:26px;
+    max-width:56ch;
+    font-size:1.12rem;
+    color:var(--ink-soft);
+  }
+  .hero .lede em{
+    font-style:italic;
+    color:var(--ink);
+  }
+  .hero-tags{
+    margin-top:34px;
+    display:flex; flex-wrap:wrap; gap:10px;
+  }
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.76rem;
+    padding:6px 12px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    color:var(--ink-soft);
+    background:var(--paper-deep);
+  }
+
+  /* ---------- section shell ---------- */
+  section{ padding:70px 0; position:relative; }
+  .section-head{
+    display:flex; align-items:baseline; gap:16px;
+    margin-bottom:40px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:16px;
+  }
+  .section-num{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--river);
+    font-size:0.85rem;
+  }
+  .section-head h2{ font-size:1.7rem; }
+
+  .reveal{
+    opacity:0; transform:translateY(18px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---------- about ---------- */
+  .about-grid{
+    display:grid; grid-template-columns: 1.3fr 1fr; gap:48px;
+  }
+  @media (max-width:760px){ .about-grid{grid-template-columns:1fr;} }
+  .about-grid p + p{ margin-top:16px; }
+  .field-card{
+    background:var(--paper-deep);
+    border:1px solid var(--line);
+    padding:22px 22px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.84rem;
+    color:var(--ink-soft);
+  }
+  .field-card .fc-title{
+    font-family:'Fraunces', serif;
+    font-size:1rem;
+    color:var(--ink);
+    margin-bottom:10px;
+  }
+  .field-card ul{ padding-left:18px; margin-top:8px; }
+  .field-card li{ margin-bottom:6px; }
+
+  /* ---------- research theses ---------- */
+  .thesis{
+    display:grid; grid-template-columns: 120px 1fr; gap:22px;
+    padding:22px 0;
+    border-top:1px dashed var(--line);
+  }
+  .thesis:last-child{ border-bottom:1px dashed var(--line); }
+  @media (max-width:560px){ .thesis{grid-template-columns:1fr; gap:6px;} }
+  .thesis .th-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.76rem;
+    color:var(--river-deep);
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+  }
+  .thesis h3{ font-size:1.15rem; margin-bottom:8px; }
+  .thesis p{ color:var(--ink-soft); }
+
+  /* ---------- fieldwork / projects along the river ---------- */
+  .field-entries{ display:flex; flex-direction:column; gap:2px; }
+  .entry{
+    position:relative;
+    padding:34px 0 34px 34px;
+    border-top:1px solid var(--line);
+  }
+  .entry:first-child{ border-top:none; }
+  .entry::before{
+    content:'';
+    position:absolute;
+    left:-3px; top:44px;
+    width:11px; height:11px;
+    border-radius:50%;
+    background:var(--paper);
+    border:2px solid var(--river);
+  }
+  .entry-meta{
+    display:flex; flex-wrap:wrap; gap:12px; align-items:baseline;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--river-deep);
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    margin-bottom:10px;
+  }
+  .entry-meta .dot{ color:var(--line); }
+  .entry h3{ font-size:1.3rem; margin-bottom:10px; }
+  .entry p{ color:var(--ink-soft); max-width:62ch; }
+  .entry-links{ margin-top:14px; display:flex; gap:18px; flex-wrap:wrap; }
+  .entry-links a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.8rem;
+    text-decoration:none;
+    border-bottom:1px solid var(--river);
+    color:var(--river-deep);
+    padding-bottom:1px;
+  }
+  .entry-links a:hover{ color:var(--wine); border-color:var(--wine); }
+
+  /* ---------- skills ---------- */
+  .skills-list{
+    display:grid; grid-template-columns:repeat(2, 1fr); gap:14px 32px;
+  }
+  @media (max-width:600px){ .skills-list{grid-template-columns:1fr;} }
+  .skill-row{
+    display:flex; justify-content:space-between; align-items:baseline;
+    border-bottom:1px solid var(--line);
+    padding-bottom:10px;
+  }
+  .skill-row .sk-name{ font-family:'Fraunces', serif; font-size:1.02rem; }
+  .skill-row .sk-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:var(--river-deep);
+  }
+
+  /* ---------- contact ---------- */
+  .contact-box{
+    background:var(--ink);
+    color:var(--paper);
+    padding:52px 40px;
+    border-radius:2px;
+    position:relative;
+    overflow:hidden;
+  }
+  .contact-box h2{ color:var(--paper); font-size:1.9rem; margin-bottom:14px; }
+  .contact-box p{ color:#D9D3C2; max-width:52ch; margin-bottom:26px; }
+  .contact-links{ display:flex; flex-wrap:wrap; gap:28px; }
+  .contact-links a{
+    color:var(--paper);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.92rem;
+    text-decoration:none;
+    border-bottom:1px solid var(--river);
+    padding-bottom:2px;
+  }
+  .contact-links a:hover{ border-color:var(--ochre); color:var(--ochre); }
+
+  footer{
+    padding:30px 0 60px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.74rem;
+    color:var(--ink-soft);
+    text-align:center;
+  }
+</style>
+</head>
+<body>
+
+<div class="river-track">
+  <svg viewBox="0 0 44 2000" preserveAspectRatio="none">
+    <path class="river-path" id="riverPath" d="M22,0 C10,120 34,240 22,360 C10,480 34,600 22,720 C10,840 34,960 22,1080 C10,1200 34,1320 22,1440 C10,1560 34,1680 22,1800 C10,1900 34,1950 22,2000" />
+  </svg>
+</div>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">Δ. Μόροσου</div>
+    <ul class="navlinks">
+      <li><a href="#about">Προφίλ</a></li>
+      <li><a href="#research">Έρευνα</a></li>
+      <li><a href="#fieldwork">Δράσεις</a></li>
+      <li><a href="#skills">Δεξιότητες</a></li>
+      <li><a href="#contact">Επικοινωνία</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div class="eyebrow mono">field notes — social anthropology</div>
+    <h1>Δήμητρα Μόροσου</h1>
+    <p class="lede">Κοινωνική ανθρωπολόγος με MSc στις <em>Σπουδές Κινητικότητας</em>. Δουλεύω στο σημείο όπου η εθνογραφική έρευνα συναντά τη δημόσια παρέμβαση — μέσα από αντι-ξεναγήσεις, βιωματικά εργαστήρια, εκθέσεις και οικοδραματουργία, πάντα με αφετηρία τη ροή: του νερού, των σωμάτων, των ιστοριών.</p>
+    <div class="hero-tags">
+      <span class="tag">εθνογραφική έρευνα</span>
+      <span class="tag">sensory ethnography</span>
+      <span class="tag">oral history</span>
+      <span class="tag">δημόσια ανθρωπολογία</span>
+      <span class="tag">community engagement</span>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-head">
+      <span class="section-num mono">01</span>
+      <h2>Προφίλ</h2>
+    </div>
+    <div class="about-grid reveal">
+      <div>
+        <p>Ο καλύτερος τρόπος να υπηρετήσεις την κοινωνική έρευνα, πιστεύω, είναι να «βουτήξεις» στο πεδίο και να πειραματιστείς μαζί του. Η δουλειά μου κινείται ανάμεσα στην ακαδημαϊκή εθνογραφία και τις πειραματικές ανθρωπιστικές επιστήμες (experimental humanities) — σε δράσεις όπου η έρευνα βγαίνει από την τάξη και το εργαστήριο και συναντά την κοινότητα.</p>
+        <p>Ζητήματα τριβής στη δουλειά μου: η ροή, η εγκατάσταση, ο ποταμός, το αστικό τοπίο και η φύση — άξονες που διαμόρφωσαν το μεταπτυχιακό μου στις Σπουδές Κινητικότητας, και που συνεχίζω να διερευνώ μέσα από την αισθητηριακή εθνογραφία και την προφορική ιστορία.</p>
+        <p>Από το 2022 συμμετέχω ενεργά στον χώρο της δημόσιας ανθρωπολογίας στη Θεσσαλία: σε αντι-ξεναγήσεις, podcasts, εκθέσεις και θερινά εργαστήρια πολιτισμικής θεωρίας.</p>
+      </div>
+      <div class="field-card">
+        <div class="fc-title">σημειώσεις πεδίου</div>
+        <ul>
+          <li>MSc, Σπουδές Κινητικότητας</li>
+          <li>BA, Κοινωνική Ανθρωπολογία</li>
+          <li>Πρακτική άσκηση — Mediterranean Institute of Gender Studies</li>
+          <li>Οργανωτική ομάδα, Pelion Summer Lab</li>
+          <li>Βάση: Θεσσαλία, GR</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="section-head">
+      <span class="section-num mono">02</span>
+      <h2>Ερευνητικές εργασίες</h2>
+    </div>
+    <div class="reveal">
+      <div class="thesis">
+        <div class="th-label mono">πτυχιακή</div>
+        <div>
+          <h3>Ζητήματα φυλής (race)</h3>
+          <p>Εθνογραφική έρευνα πάνω σε ζητήματα φυλής — πρώτη μου συστηματική επαφή με την εθνογραφική μέθοδο ως εργαλείο κατανόησης κοινωνικών ιεραρχιών και βιωμένης εμπειρίας.</p>
+        </div>
+      </div>
+      <div class="thesis">
+        <div class="th-label mono">διπλωματική</div>
+        <div>
+          <h3>Κινητική αναπηρία στον οικιακό χώρο</h3>
+          <p>Στο πλαίσιο του MSc στις Σπουδές Κινητικότητας, διερεύνησα πώς η κινητική αναπηρία διαμορφώνει και διαμορφώνεται από τον οικιακό χώρο — τη σχέση σώματος, εγκατάστασης και προσβασιμότητας. Η έρευνα μου έδωσε τα θεμέλια για να χτίζω γέφυρες εμπιστοσύνης με τα άτομα του πεδίου, κατανοώντας και σεβόμενη τη διαφορετικότητα.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fieldwork">
+    <div class="section-head">
+      <span class="section-num mono">03</span>
+      <h2>Δράσεις &amp; Δημόσια Ανθρωπολογία</h2>
+    </div>
+
+    <div class="field-entries reveal">
+
+      <article class="entry">
+        <div class="entry-meta">
+          <span>Βόλος</span><span class="dot">·</span><span>Αντι-ξενάγηση</span>
+        </div>
+        <h3>Να απο-αποικιοποιήσουμε την πόλη</h3>
+        <p>Αντι-ξενάγηση στην πόλη του Βόλου, στο πέρασμα του 20ού αιώνα, σχεδιασμένη στο πλαίσιο του μαθήματος «Αποικιοκρατία και Πολιτισμική Κριτική» (Πανεπιστήμιο Θεσσαλίας), σε συνεργασία με το Decolonize Hellas και το Rosa Luxemburg Stiftung Greece. Μια πρακτική αντι-μνήμης και ευαισθητοποίησης στον δημόσιο χώρο.</p>
+        <div class="entry-links">
+          <a href="https://decolonizehellas.org/na-apo-apoikiopoiisoume-tin-poli/" target="_blank" rel="noopener">decolonizehellas.org ↗</a>
+          <a href="https://www.facebook.com/events/2263705317357797" target="_blank" rel="noopener">εκδήλωση ↗</a>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-meta">
+          <span>Πανεπιστήμιο Θεσσαλίας</span><span class="dot">·</span><span>Podcast</span>
+        </div>
+        <h3>«Από τον πέμπτο»</h3>
+        <p>Σειρά podcasts δημόσιας ανθρωπολογίας από ομάδα φοιτητών/τριών, διδασκόντων/ουσών και αποφοίτων του Τομέα Κοινωνικής Ανθρωπολογίας του Πανεπιστημίου Θεσσαλίας. Θεματικές σειρές που βγάζουν όσα συζητούν οι «ειδικοί» έξω από την τάξη, σε διάλογο με την κοινωνία.</p>
+        <div class="entry-links">
+          <a href="https://creators.spotify.com/pod/profile/--273/" target="_blank" rel="noopener">Spotify ↗</a>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-meta">
+          <span>Μουσείο Πόλης Βόλου</span><span class="dot">·</span><span>Απρίλιος 2025</span><span class="dot">·</span><span>Έκθεση</span>
+        </div>
+        <h3>Ιχνηλατήσεις Πλημμύρας (Floodmarks)</h3>
+        <p>Διεπιστημονική έκθεση κοινωνικών ανθρωπολόγων, αρχιτεκτόνων, γεωγράφων, καλλιτεχνών και ακτιβιστών στον απόηχο της διπλής πλημμύρας που συγκλόνισε τον Βόλο και τη Θεσσαλία τον Σεπτέμβριο του 2023. Δημόσιος χώρος μαρτυρίας, διαλόγου και προβληματισμού, με βιωματικά εργαστήρια, πολυμεσικά εκθέματα, γεωτοποθετημένο ηχητικό περίπατο και «τοτέμ» πλημμύρας. Διοργάνωση: Πηνελόπη Παπαηλία (Παν. Θεσσαλίας / Pelion Summer Lab), ΙΑΚΑ &amp; Τμήμα Αρχιτεκτόνων Παν. Θεσσαλίας, Εικαστικός Σύλλογος Βόλου.</p>
+        <div class="entry-links">
+          <a href="https://snfphi.columbia.edu/el/events/floodmarks/" target="_blank" rel="noopener">snfphi.columbia.edu ↗</a>
+          <a href="https://www.facebook.com/photo?fbid=724946242967416&set=pcb.724949019633805" target="_blank" rel="noopener">φωτογραφίες ↗</a>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-meta">
+          <span>Νεοχώρι Πηλίου</span><span class="dot">·</span><span>Καλοκαίρι 2025</span><span class="dot">·</span><span>PSL 6</span>
+        </div>
+        <h3>Peira(g)ma — Anthropo-scenes: Restaging Climate Dramas</h3>
+        <p>Τελική δράση οικοδραματουργίας (ecodramaturgy) του 6ου Pelion Summer Lab for Cultural Theory and Experimental Humanities. Δέκα μέρες πειραματισμού με νέους τρόπους σκηνοθεσίας, μαρτυρίας και εμπλοκής με τις κλιματικές πραγματικότητες, βασισμένους στις τεχνικές κοινοτικού θεάτρου της Ντίνας Σταματοπούλου. Λειτούργησα ως σημείο επαφής για τη διεπιστημονική ομάδα και συνδέτικος κρίκος με την τοπική κοινότητα του Νεοχωρίου.</p>
+        <div class="entry-links">
+          <a href="https://www.pelionsummerlab.net/" target="_blank" rel="noopener">pelionsummerlab.net ↗</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-head">
+      <span class="section-num mono">04</span>
+      <h2>Δεξιότητες</h2>
+    </div>
+    <div class="skills-list reveal">
+      <div class="skill-row"><span class="sk-name">Εθνογραφική έρευνα</span><span class="sk-tag mono">πεδίο</span></div>
+      <div class="skill-row"><span class="sk-name">Sensory ethnography</span><span class="sk-tag mono">μέθοδος</span></div>
+      <div class="skill-row"><span class="sk-name">Προφορική ιστορία</span><span class="sk-tag mono">μέθοδος</span></div>
+      <div class="skill-row"><span class="sk-name">Σχεδιασμός βιωματικών εργαστηρίων</span><span class="sk-tag mono">παιδαγωγική</span></div>
+      <div class="skill-row"><span class="sk-name">Σύνδεσμος με τοπική κοινότητα</span><span class="sk-tag mono">συνεργασία</span></div>
+      <div class="skill-row"><span class="sk-name">Διαχείριση προϋπολογισμού έργου</span><span class="sk-tag mono">οργάνωση</span></div>
+      <div class="skill-row"><span class="sk-name">Σχεδιασμός κοινωνικών παρεμβάσεων</span><span class="sk-tag mono">στρατηγική</span></div>
+      <div class="skill-row"><span class="sk-name">Διεπιστημονικός συντονισμός</span><span class="sk-tag mono">οργάνωση</span></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-box reveal">
+      <h2>Επικοινωνία</h2>
+      <p>Ανοιχτή σε συνεργασίες γύρω από την κοινωνική έρευνα, την προστασία ευάλωτων ομάδων και τη δημόσια ανθρωπολογία.</p>
+      <div class="contact-links">
+        <a href="mailto:youremail@example.com">youremail@example.com</a>
+        <a href="#">LinkedIn ↗</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Δήμητρα Μόροσου — Κοινωνική Ανθρωπολόγος · 2026
+</footer>
+
+<script>
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.12});
+  revealEls.forEach(el=>io.observe(el));
+
+  // river draw-on-scroll
+  const path = document.getElementById('riverPath');
+  if(path){
+    const len = path.getTotalLength();
+    path.style.strokeDasharray = len;
+    path.style.strokeDashoffset = len;
+    function updateRiver(){
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = Math.min(1, Math.max(0, scrollTop / docHeight));
+      path.style.strokeDashoffset = len * (1 - progress);
+    }
+    window.addEventListener('scroll', updateRiver);
+    updateRiver();
+  }
+</script>
+
+</body>
+</html>
