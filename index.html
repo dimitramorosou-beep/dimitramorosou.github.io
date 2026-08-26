@@ -370,7 +370,28 @@
     color:var(--ink-soft);
   }
 
-  /* ---------- contact ---------- */
+    /* ---------- εικόνα δίπλα σε δράση ---------- */
+  .entry-cols{
+    display:grid;
+    grid-template-columns: 1fr 270px;
+    gap:28px;
+    align-items:start;
+  }
+  @media (max-width:760px){ .entry-cols{ grid-template-columns:1fr; gap:20px; } }
+  .entry-cols p{ max-width:none; }
+  .shot{ margin:0; }
+  .shot img{
+    display:block; width:100%; height:auto;
+    border:1px solid var(--line);
+    border-radius:2px;
+  }
+  .shot figcaption{
+    margin-top:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:var(--ink-soft);
+    line-height:1.5;
+  }
   .contact-box{
     background:var(--ink);
     color:var(--paper);
@@ -566,15 +587,25 @@
         </div>
       </article>
 
-      <article class="entry">
+            <article class="entry">
         <div class="entry-meta">
           <span>Μουσείο Πόλης Βόλου</span><span class="dot" aria-hidden="true">·</span><span>Απρίλιος 2025</span><span class="dot" aria-hidden="true">·</span><span>Έκθεση</span>
         </div>
         <h3>Ιχνηλατήσεις Πλημμύρας (<span lang="en">Floodmarks</span>)</h3>
-        <p>Διεπιστημονική έκθεση κοινωνικών ανθρωπολόγων, αρχιτεκτόνων, γεωγράφων, καλλιτεχνών και ακτιβιστών στον απόηχο της διπλής πλημμύρας που συγκλόνισε τον Βόλο και τη Θεσσαλία τον Σεπτέμβριο του 2023. Η έκθεση μεταμορφώνεται σε έναν δημόσιο χώρο μαρτυρίας, διαλόγου και προβληματισμού, με βιωματικά εργαστήρια, πολυμεσικά και πολυτροπικά εκθέματα, γεωτοποθετημένο ηχητικό περίπατο και «τοτέμ» πλημμύρας. Διοργάνωση: Τμήμα Ιστορίας, Αρχαιολογίας και Κοινωνικής Ανθρωπολογίας &amp; Τμήμα Αρχιτεκτόνων Παν. Θεσσαλίας, <span lang="en">Pelion Summer Lab for Cultural Theory and Experimental Humanities</span>, Εικαστικός Σύλλογος Βόλου.</p>
-        <div class="entry-links">
-          <a href="https://snfphi.columbia.edu/el/events/floodmarks/" target="_blank" rel="noopener">snfphi.columbia.edu <span aria-hidden="true">↗</span></a>
-          <a href="https://www.facebook.com/photo?fbid=724946242967416&amp;set=pcb.724949019633805" target="_blank" rel="noopener">φωτογραφίες <span aria-hidden="true">↗</span></a>
+
+        <div class="entry-cols">
+          <div>
+            <p>Διεπιστημονική έκθεση κοινωνικών ανθρωπολόγων, αρχιτεκτόνων, γεωγράφων, καλλιτεχνών και ακτιβιστών στον απόηχο της διπλής πλημμύρας που συγκλόνισε τον Βόλο και τη Θεσσαλία τον Σεπτέμβριο του 2023. Η έκθεση μεταμορφώνεται σε έναν δημόσιο χώρο μαρτυρίας, διαλόγου και προβληματισμού, με βιωματικά εργαστήρια, πολυμεσικά και πολυτροπικά εκθέματα, γεωτοποθετημένο ηχητικό περίπατο και «τοτέμ» πλημμύρας. Διοργάνωση: Τμήμα Ιστορίας, Αρχαιολογίας και Κοινωνικής Ανθρωπολογίας &amp; Τμήμα Αρχιτεκτόνων Παν. Θεσσαλίας, <span lang="en">Pelion Summer Lab for Cultural Theory and Experimental Humanities</span>, Εικαστικός Σύλλογος Βόλου.</p>
+            <div class="entry-links">
+              <a href="https://snfphi.columbia.edu/el/events/floodmarks/" target="_blank" rel="noopener">snfphi.columbia.edu <span aria-hidden="true">↗</span></a>
+              <a href="https://www.facebook.com/photo?fbid=724946242967416&amp;set=pcb.724949019633805" target="_blank" rel="noopener">φωτογραφίες <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+
+          <figure class="shot">
+            <img src="floodmarks-workshop.jpg" alt="Φύλλο εργασίας από βιωματικό εργαστήριο black out poetry, με τη φράση «Υποδομές σε κρίση» και σβησμένες λέξεις μέσα σε κείμενο." loading="lazy">
+            <figcaption>Βιωματικό εργαστήριο <span lang="en">black out poetry</span>, Ιχνηλατήσεις Πλημμύρας, 2025.</figcaption>
+          </figure>
         </div>
       </article>
 
