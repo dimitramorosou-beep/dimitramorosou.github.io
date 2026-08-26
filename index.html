@@ -4,9 +4,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Δήμητρα Μοροσού — Κοινωνική Ανθρωπολόγος</title>
+
+
+
+<meta name="description" content="Δήμητρα Μοροσού — κοινωνική ανθρωπολόγος, MSc Σπουδές Κινητικότητας. Κοινωνική έρευνα και δημόσια παρέμβαση στη Θεσσαλία: εθνογραφία, εργαστήρια, focus group και πολυμεσικά εργαλεία — αντι-ξεναγήσεις, εκθέσεις, οικοδραματουργία.">
+<meta name="author" content="Δήμητρα Μοροσού">
+
+<link rel="canonical" href="https://TO-ONOMA-SOU.github.io/">
+<meta property="og:url" content="https://TO-ONOMA-SOU.github.io/">
+<meta property="og:image" content="https://TO-ONOMA-SOU.github.io/preview.png">
+
+<meta property="og:type" content="profile">
+<meta property="og:locale" content="el_GR">
+<meta property="og:site_name" content="Δήμητρα Μοροσού">
+<meta property="og:title" content="Δήμητρα Μοροσού — Κοινωνική Ανθρωπολόγος">
+<meta property="og:description" content="Στο σημείο όπου η κοινωνική έρευνα συναντά τη δημόσια παρέμβαση: εθνογραφία, εργαστήρια, focus group, πολυμεσικά εργαλεία.">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Δήμητρα Μοροσού — Κοινωνική Ανθρωπολόγος">
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="theme-color" content="#F1ECDE">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F1ECDE'/%3E%3Cpath d='M4 12c4-4 8 4 12 0s8-4 12 0' fill='none' stroke='%232E6B74' stroke-width='2.6' stroke-linecap='round'/%3E%3Cpath d='M4 21c4-4 8 4 12 0s8-4 12 0' fill='none' stroke='%23C68A3E' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<script>document.documentElement.classList.add('js');</script>
+
 <style>
   :root{
     --paper: #F1ECDE;
@@ -19,6 +45,7 @@
     --wine: #7A2E2E;
     --line: rgba(36,35,31,0.14);
     --max: 920px;
+    --header-h: 80px;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
@@ -30,6 +57,7 @@
     line-height:1.65;
     font-size:17px;
     overflow-x:hidden;
+    -webkit-text-size-adjust:100%;
     background-image:
       radial-gradient(rgba(36,35,31,0.035) 1px, transparent 1px);
     background-size: 22px 22px;
@@ -39,6 +67,7 @@
     font-weight:500;
     color:var(--ink);
     letter-spacing:-0.01em;
+    text-wrap:balance;
   }
   .mono{
     font-family:'IBM Plex Mono', monospace;
@@ -46,6 +75,25 @@
   }
   a{color:var(--river-deep);}
   .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+  ::selection{ background:var(--river); color:var(--paper); }
+
+  /* κάθε ενότητα σταματάει κάτω από τη μπάρα, όχι από πίσω της */
+  section[id]{ scroll-margin-top: calc(var(--header-h) + 12px); }
+
+  /* ορατό περίγραμμα για όποιον πλοηγείται με πληκτρολόγιο */
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--river-deep);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+  .skip-link{
+    position:absolute; left:-9999px;
+    background:var(--ink); color:var(--paper);
+    padding:12px 18px; z-index:100;
+    font-family:'IBM Plex Mono', monospace; font-size:0.85rem;
+    text-decoration:none;
+  }
+  .skip-link:focus{ left:12px; top:12px; }
 
   /* ---------- river signature element ---------- */
   .river-track{
@@ -81,6 +129,7 @@
     font-family:'Fraunces', serif;
     font-size:1.05rem;
     font-weight:500;
+    white-space:nowrap;
   }
   .navlinks{display:flex; gap:26px; list-style:none;}
   .navlinks a{
@@ -92,16 +141,29 @@
     letter-spacing:0.06em;
     border-bottom:1px solid transparent;
     padding-bottom:2px;
+    white-space:nowrap;
     transition:border-color 0.2s, color 0.2s;
   }
   .navlinks a:hover{ color:var(--river-deep); border-color:var(--river-deep); }
-  @media (max-width:640px){ .navlinks{gap:14px;} .navlinks a{font-size:0.72rem;} }
+  @media (max-width:700px){
+    :root{ --header-h: 112px; }
+    nav.wrap{ flex-direction:column; align-items:flex-start; gap:10px; }
+    .navlinks{
+      gap:18px; width:100%;
+      overflow-x:auto; scrollbar-width:none;
+      padding-bottom:2px;
+    }
+    .navlinks::-webkit-scrollbar{ display:none; }
+    .navlinks li{ flex:0 0 auto; }
+    .navlinks a{ font-size:0.78rem; }
+  }
 
   /* ---------- hero ---------- */
   .hero{
     padding:96px 0 88px;
     position:relative;
   }
+  @media (max-width:600px){ .hero{ padding:60px 0 56px; } }
   .eyebrow{
     font-family:'IBM Plex Mono', monospace;
     font-size:0.82rem;
@@ -116,6 +178,7 @@
     width:26px; height:1px;
     background:var(--river-deep);
     display:inline-block;
+    flex:0 0 auto;
   }
   .hero h1{
     font-size:clamp(2.1rem, 5vw, 3.4rem);
@@ -138,7 +201,7 @@
   }
   .tag{
     font-family:'IBM Plex Mono', monospace;
-    font-size:0.76rem;
+    font-size:0.78rem;
     padding:6px 12px;
     border:1px solid var(--line);
     border-radius:20px;
@@ -148,6 +211,7 @@
 
   /* ---------- section shell ---------- */
   section{ padding:70px 0; position:relative; }
+  @media (max-width:600px){ section{ padding:48px 0; } }
   .section-head{
     display:flex; align-items:baseline; gap:16px;
     margin-bottom:40px;
@@ -161,17 +225,18 @@
   }
   .section-head h2{ font-size:1.7rem; }
 
-  .reveal{
+  .reveal{ opacity:1; transform:none; }
+  .js .reveal{
     opacity:0; transform:translateY(18px);
     transition:opacity 0.7s ease, transform 0.7s ease;
   }
-  .reveal.in{ opacity:1; transform:translateY(0); }
+  .js .reveal.in{ opacity:1; transform:translateY(0); }
 
   /* ---------- about ---------- */
   .about-grid{
     display:grid; grid-template-columns: 1.3fr 1fr; gap:48px;
   }
-  @media (max-width:760px){ .about-grid{grid-template-columns:1fr;} }
+  @media (max-width:760px){ .about-grid{grid-template-columns:1fr; gap:32px;} }
   .about-grid p + p{ margin-top:16px; }
   .field-card{
     background:var(--paper-deep);
@@ -180,6 +245,7 @@
     font-family:'IBM Plex Mono', monospace;
     font-size:0.84rem;
     color:var(--ink-soft);
+    align-self:start;
   }
   .field-card .fc-title{
     font-family:'Fraunces', serif;
@@ -207,6 +273,21 @@
   }
   .thesis h3{ font-size:1.15rem; margin-bottom:8px; }
   .thesis p{ color:var(--ink-soft); }
+  .thesis-method{
+    margin-top:12px;
+    padding-left:14px;
+    border-left:2px solid rgba(46,107,116,0.30);
+  }
+  .thesis-method .tm-label{
+    display:block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--river-deep);
+    margin-bottom:3px;
+  }
+  .thesis-method p{ font-size:0.95rem; }
 
   /* ---------- fieldwork / projects along the river ---------- */
   .field-entries{ display:flex; flex-direction:column; gap:2px; }
@@ -225,6 +306,7 @@
     background:var(--paper);
     border:2px solid var(--river);
   }
+  @media (max-width:560px){ .entry{ padding-left:22px; } }
   .entry-meta{
     display:flex; flex-wrap:wrap; gap:12px; align-items:baseline;
     font-family:'IBM Plex Mono', monospace;
@@ -245,24 +327,47 @@
     border-bottom:1px solid var(--river);
     color:var(--river-deep);
     padding-bottom:1px;
+    transition:color 0.2s, border-color 0.2s;
   }
   .entry-links a:hover{ color:var(--wine); border-color:var(--wine); }
 
   /* ---------- skills ---------- */
-  .skills-list{
-    display:grid; grid-template-columns:repeat(2, 1fr); gap:14px 32px;
+  .skill-groups{
+    display:grid; grid-template-columns:repeat(2, 1fr); gap:34px 44px;
   }
-  @media (max-width:600px){ .skills-list{grid-template-columns:1fr;} }
-  .skill-row{
-    display:flex; justify-content:space-between; align-items:baseline;
-    border-bottom:1px solid var(--line);
-    padding-bottom:10px;
-  }
-  .skill-row .sk-name{ font-family:'Fraunces', serif; font-size:1.02rem; }
-  .skill-row .sk-tag{
+  @media (max-width:700px){ .skill-groups{grid-template-columns:1fr; gap:28px;} }
+  .skill-group h3{
     font-family:'IBM Plex Mono', monospace;
-    font-size:0.72rem;
+    font-size:0.74rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
     color:var(--river-deep);
+    border-bottom:1px solid var(--line);
+    padding-bottom:9px;
+    margin-bottom:13px;
+  }
+  .skill-group ul{ list-style:none; padding:0; }
+  .skill-group li{
+    font-size:0.97rem;
+    color:var(--ink-soft);
+    padding:4px 0;
+    line-height:1.5;
+  }
+  .skill-group li .en{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.76rem;
+    color:var(--river);
+    opacity:0.85;
+  }
+  .skill-note{
+    margin-top:34px;
+    padding:16px 20px;
+    background:var(--paper-deep);
+    border:1px dashed var(--line);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.8rem;
+    color:var(--ink-soft);
   }
 
   /* ---------- contact ---------- */
@@ -274,6 +379,7 @@
     position:relative;
     overflow:hidden;
   }
+  @media (max-width:600px){ .contact-box{ padding:36px 24px; } }
   .contact-box h2{ color:var(--paper); font-size:1.9rem; margin-bottom:14px; }
   .contact-box p{ color:#D9D3C2; max-width:52ch; margin-bottom:26px; }
   .contact-links{ display:flex; flex-wrap:wrap; gap:28px; }
@@ -284,8 +390,10 @@
     text-decoration:none;
     border-bottom:1px solid var(--river);
     padding-bottom:2px;
+    transition:color 0.2s, border-color 0.2s;
   }
   .contact-links a:hover{ border-color:var(--ochre); color:var(--ochre); }
+  .contact-box a:focus-visible{ outline-color:var(--ochre); }
 
   footer{
     padding:30px 0 60px;
@@ -294,18 +402,44 @@
     color:var(--ink-soft);
     text-align:center;
   }
+
+  /* ---------- σεβασμός στη ρύθμιση «λιγότερη κίνηση» ---------- */
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *, *::before, *::after{
+      animation-duration:0.001ms !important;
+      transition-duration:0.001ms !important;
+    }
+    .js .reveal{ opacity:1; transform:none; }
+    .river-path{ stroke-dasharray:none !important; stroke-dashoffset:0 !important; }
+  }
+
+  /* ---------- εκτύπωση / αποθήκευση ως PDF ---------- */
+  @media print{
+    body{ background:#fff; color:#000; font-size:11pt; }
+    header, .river-track, .skip-link, footer{ display:none !important; }
+    .reveal, .js .reveal{ opacity:1 !important; transform:none !important; }
+    section{ padding:14pt 0; break-inside:avoid; }
+    .entry, .thesis{ break-inside:avoid; }
+    .contact-box{ background:#fff; color:#000; border:1px solid #000; padding:18pt; }
+    .contact-box h2, .contact-box p, .contact-links a{ color:#000; }
+    a{ color:#000; }
+    .entry-links a::after{ content:" (" attr(href) ")"; font-size:8pt; word-break:break-all; }
+  }
 </style>
 </head>
 <body>
 
-<div class="river-track">
-  <svg viewBox="0 0 44 2000" preserveAspectRatio="none">
+<a class="skip-link" href="#main">Μετάβαση στο περιεχόμενο</a>
+
+<div class="river-track" aria-hidden="true">
+  <svg viewBox="0 0 44 2000" preserveAspectRatio="none" focusable="false">
     <path class="river-path" id="riverPath" d="M22,0 C10,120 34,240 22,360 C10,480 34,600 22,720 C10,840 34,960 22,1080 C10,1200 34,1320 22,1440 C10,1560 34,1680 22,1800 C10,1900 34,1950 22,2000" />
   </svg>
 </div>
 
 <header>
-  <nav class="wrap">
+  <nav class="wrap" aria-label="Κύρια πλοήγηση">
     <div class="brand">Δ. Μοροσού</div>
     <ul class="navlinks">
       <li><a href="#about">Προφίλ</a></li>
@@ -317,18 +451,19 @@
   </nav>
 </header>
 
-<main class="wrap">
+<main class="wrap" id="main">
 
   <section class="hero">
-    <div class="eyebrow mono">field notes — social anthropology</div>
+    <p class="eyebrow mono"><span lang="en">field notes</span> — <span lang="en">social anthropology</span></p>
     <h1>Δήμητρα Μοροσού</h1>
-    <p class="lede">Κοινωνική ανθρωπολόγος με MSc στις <em>Σπουδές Κινητικότητας</em>. Δουλεύω στο σημείο όπου η εθνογραφική έρευνα συναντά τη δημόσια παρέμβαση — μέσα από αντι-ξεναγήσεις, βιωματικά εργαστήρια, εκθέσεις και οικοδραματουργία, πάντα με αφετηρία τη ροή: του νερού, των σωμάτων, των ιστοριών.</p>
+    <p class="lede">Δουλεύω στο σημείο όπου η κοινωνική έρευνα συναντά τη δημόσια παρέμβαση — μέσα από την <em>εθνογραφία</em>, τις δημόσιες παρεμβάσεις, τα εργαστήρια, τα <span lang="en">focus group</span> και τα πολυμεσικά εργαλεία.</p>
     <div class="hero-tags">
       <span class="tag">εθνογραφική έρευνα</span>
-      <span class="tag">sensory ethnography</span>
-      <span class="tag">oral history</span>
+      <span class="tag">σχεδιασμός έρευνας</span>
+      <span class="tag">ανάλυση πεδίου</span>
+      <span class="tag">πολυμεσικά εργαλεία</span>
+      <span class="tag">προφορική ιστορία</span>
       <span class="tag">δημόσια ανθρωπολογία</span>
-      <span class="tag">community engagement</span>
     </div>
   </section>
 
@@ -339,17 +474,18 @@
     </div>
     <div class="about-grid reveal">
       <div>
-        <p>Ο καλύτερος τρόπος να υπηρετήσεις την κοινωνική έρευνα, πιστεύω, είναι να «βουτήξεις» στο πεδίο και να πειραματιστείς μαζί του. Η δουλειά μου κινείται ανάμεσα στην ακαδημαϊκή εθνογραφία και τις πειραματικές ανθρωπιστικές επιστήμες (experimental humanities) — σε δράσεις όπου η έρευνα βγαίνει από την τάξη και το εργαστήριο και συναντά την κοινότητα.</p>
-        <p>Ζητήματα τριβής στη δουλειά μου: η ροή, η εγκατάσταση, ο ποταμός, το αστικό τοπίο και η φύση — άξονες που διαμόρφωσαν το μεταπτυχιακό μου στις Σπουδές Κινητικότητας, και που συνεχίζω να διερευνώ μέσα από την αισθητηριακή εθνογραφία και την προφορική ιστορία.</p>
-        <p>Από το 2022 συμμετέχω ενεργά στον χώρο της δημόσιας ανθρωπολογίας στη Θεσσαλία: σε αντι-ξεναγήσεις, podcasts, εκθέσεις και θερινά εργαστήρια πολιτισμικής θεωρίας.</p>
+        <p>Ο καλύτερος τρόπος να υπηρετήσεις την κοινωνική έρευνα, πιστεύω, είναι να «βουτήξεις» στο πεδίο και να πειραματιστείς μαζί του.</p>
+        <p>Μέσα από τη δουλειά μου προσπαθώ να φέρω την ανθρωπολογία και τα εργαλεία της σε συνομιλία με άλλα πεδία, ώστε οι δημόσιες παρεμβάσεις να διαμορφώνονται από κοινού — με τη συμμετοχή της κοινότητας.</p>
+        <p>Με ενδιαφέρει να κρατώ το τοπικό στο κέντρο — τη Λάρισα, τη Θεσσαλία, τον κάμπο, το αστικό τοπίο — χωρίς να το απομονώνω: τα ζητήματα μιας κοινότητας να διαβάζονται μέσα στα ευρύτερα συμφραζόμενά τους. Εκεί συναντώ τη δημόσια ανθρωπολογία: στη μετάδοση των πορισμάτων προς τα έξω και στη συνδιαμόρφωσή τους με την κοινότητα.</p>
+        <p>Από το 2022 συμμετέχω ενεργά στον χώρο της δημόσιας ανθρωπολογίας στη Θεσσαλία: σε αντι-ξεναγήσεις, <span lang="en">podcasts</span>, εκθέσεις και θερινά εργαστήρια πολιτισμικής θεωρίας.</p>
       </div>
       <div class="field-card">
         <div class="fc-title">σημειώσεις πεδίου</div>
         <ul>
           <li>MSc, Σπουδές Κινητικότητας</li>
           <li>BA, Κοινωνική Ανθρωπολογία</li>
-          <li>Πρακτική άσκηση — Mediterranean Institute of Gender Studies</li>
-          <li>Οργανωτική ομάδα, Pelion Summer Lab</li>
+          <li>Πρακτική άσκηση — <span lang="en">Mediterranean Institute of Gender Studies</span></li>
+          <li>Οργανωτική ομάδα, <span lang="en">Pelion Summer Lab</span></li>
           <li>Βάση: Θεσσαλία, GR</li>
         </ul>
       </div>
@@ -365,15 +501,21 @@
       <div class="thesis">
         <div class="th-label mono">πτυχιακή</div>
         <div>
-          <h3>Ζητήματα φυλής (race)</h3>
-          <p>Εθνογραφική έρευνα πάνω σε ζητήματα φυλής — πρώτη μου συστηματική επαφή με την εθνογραφική μέθοδο ως εργαλείο κατανόησης κοινωνικών ιεραρχιών και βιωμένης εμπειρίας.</p>
+          <h3>Τα Ρ/ράστα στην Ελλάδα: (Ξε)πλέκοντας φυλετικές ιστορίες, έμφυλες επιτελέσεις και πολιτικές αφηγήσεις</h3>
+          <div class="thesis-method">
+            <span class="tm-label">σχεδιασμός έρευνας</span>
+            <p>Ποιοτική έρευνα με χρήση συνεντεύξεων, εντοπισμός ατόμων και ανάλυση δεδομένων. Μέρος της εργασίας έχει χρησιμοποιηθεί σε <span lang="en">podcast</span>.</p>
+          </div>
         </div>
       </div>
       <div class="thesis">
         <div class="th-label mono">διπλωματική</div>
         <div>
-          <h3>Κινητική αναπηρία στον οικιακό χώρο</h3>
-          <p>Στο πλαίσιο του MSc στις Σπουδές Κινητικότητας, διερεύνησα πώς η κινητική αναπηρία διαμορφώνει και διαμορφώνεται από τον οικιακό χώρο — τη σχέση σώματος, εγκατάστασης και προσβασιμότητας. Η έρευνα μου έδωσε τα θεμέλια για να χτίζω γέφυρες εμπιστοσύνης με τα άτομα του πεδίου, κατανοώντας και σεβόμενη τη διαφορετικότητα.</p>
+          <h3>Αμφίσημα κατώφλια: μια εθνογραφία για τον οικιακό χώρο ανάπηρων κινητικοτήτων</h3>
+          <div class="thesis-method">
+            <span class="tm-label">σχεδιασμός έρευνας</span>
+            <p>Ποιοτική έρευνα με χρήση συνεντεύξεων, εντοπισμός ατόμων, αυτοεθνογραφικές σημειώσεις, πολυμεσικά εργαλεία (π.χ. φωτογραφία) και ανάλυση δεδομένων.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -389,47 +531,63 @@
 
       <article class="entry">
         <div class="entry-meta">
-          <span>Βόλος</span><span class="dot">·</span><span>Αντι-ξενάγηση</span>
-        </div>
-        <h3>Να απο-αποικιοποιήσουμε την πόλη</h3>
-        <p>Αντι-ξενάγηση στην πόλη του Βόλου, στο πέρασμα του 20ού αιώνα, σχεδιασμένη στο πλαίσιο του μαθήματος «Αποικιοκρατία και Πολιτισμική Κριτική» (Πανεπιστήμιο Θεσσαλίας), σε συνεργασία με το Decolonize Hellas και το Rosa Luxemburg Stiftung Greece. Μια πρακτική αντι-μνήμης και ευαισθητοποίησης στον δημόσιο χώρο.</p>
-        <div class="entry-links">
-          <a href="https://decolonizehellas.org/na-apo-apoikiopoiisoume-tin-poli/" target="_blank" rel="noopener">decolonizehellas.org ↗</a>
-          <a href="https://www.facebook.com/events/2263705317357797" target="_blank" rel="noopener">εκδήλωση ↗</a>
-        </div>
-      </article>
-
-      <article class="entry">
-        <div class="entry-meta">
-          <span>Πανεπιστήμιο Θεσσαλίας</span><span class="dot">·</span><span>Podcast</span>
+          <span>Πανεπιστήμιο Θεσσαλίας</span><span class="dot" aria-hidden="true">·</span><span lang="en">Podcast</span>
         </div>
         <h3>«Από τον πέμπτο»</h3>
-        <p>Σειρά podcasts δημόσιας ανθρωπολογίας από ομάδα φοιτητών/τριών, διδασκόντων/ουσών και αποφοίτων του Τομέα Κοινωνικής Ανθρωπολογίας του Πανεπιστημίου Θεσσαλίας. Θεματικές σειρές που βγάζουν όσα συζητούν οι «ειδικοί» έξω από την τάξη, σε διάλογο με την κοινωνία.</p>
+        <p>Σειρά <span lang="en">podcasts</span> δημόσιας ανθρωπολογίας από ομάδα φοιτητών/τριών, διδασκόντων/ουσών και αποφοίτων του Τομέα Κοινωνικής Ανθρωπολογίας του Πανεπιστημίου Θεσσαλίας. Θεματικές σειρές που βγάζουν όσα συζητούν οι «ειδικοί» έξω από την τάξη, σε διάλογο με την κοινωνία.</p>
         <div class="entry-links">
-          <a href="https://creators.spotify.com/pod/profile/--273/" target="_blank" rel="noopener">Spotify ↗</a>
+          <a href="https://creators.spotify.com/pod/profile/--273/" target="_blank" rel="noopener">Spotify <span aria-hidden="true">↗</span></a>
         </div>
       </article>
 
       <article class="entry">
         <div class="entry-meta">
-          <span>Μουσείο Πόλης Βόλου</span><span class="dot">·</span><span>Απρίλιος 2025</span><span class="dot">·</span><span>Έκθεση</span>
+          <span>Βόλος</span><span class="dot" aria-hidden="true">·</span><span>Αντι-ξενάγηση</span>
         </div>
-        <h3>Ιχνηλατήσεις Πλημμύρας (Floodmarks)</h3>
-        <p>Διεπιστημονική έκθεση κοινωνικών ανθρωπολόγων, αρχιτεκτόνων, γεωγράφων, καλλιτεχνών και ακτιβιστών στον απόηχο της διπλής πλημμύρας που συγκλόνισε τον Βόλο και τη Θεσσαλία τον Σεπτέμβριο του 2023. Δημόσιος χώρος μαρτυρίας, διαλόγου και προβληματισμού, με βιωματικά εργαστήρια, πολυμεσικά εκθέματα, γεωτοποθετημένο ηχητικό περίπατο και «τοτέμ» πλημμύρας. Διοργάνωση: Πηνελόπη Παπαηλία (Παν. Θεσσαλίας / Pelion Summer Lab), ΙΑΚΑ &amp; Τμήμα Αρχιτεκτόνων Παν. Θεσσαλίας, Εικαστικός Σύλλογος Βόλου.</p>
+        <h3>Να απο-αποικιοποιήσουμε την πόλη</h3>
+        <p>Πειραματιζόμαστε με το εργαλείο της αντι-ξενάγησης στην πόλη του Βόλου, ως πρακτικής μιας από τα κάτω παιδαγωγικής και ως τρόπο δημόσιας παρέμβασης, σχεδιασμένη στο πλαίσιο του μαθήματος «Αποικιοκρατία και Πολιτισμική Κριτική» (Πανεπιστήμιο Θεσσαλίας), σε συνεργασία με το <span lang="en">Decolonize Hellas</span> και το <span lang="de">Rosa Luxemburg Stiftung</span> Greece. Μια πρακτική μοιράσματος, συλλογικής σκέψης και ευαισθητοποίησης στον δημόσιο χώρο.</p>
         <div class="entry-links">
-          <a href="https://snfphi.columbia.edu/el/events/floodmarks/" target="_blank" rel="noopener">snfphi.columbia.edu ↗</a>
-          <a href="https://www.facebook.com/photo?fbid=724946242967416&set=pcb.724949019633805" target="_blank" rel="noopener">φωτογραφίες ↗</a>
+          <a href="https://decolonizehellas.org/na-apo-apoikiopoiisoume-tin-poli/" target="_blank" rel="noopener">decolonizehellas.org <span aria-hidden="true">↗</span></a>
+          <a href="https://www.facebook.com/events/2263705317357797" target="_blank" rel="noopener">εκδήλωση <span aria-hidden="true">↗</span></a>
         </div>
       </article>
 
       <article class="entry">
         <div class="entry-meta">
-          <span>Νεοχώρι Πηλίου</span><span class="dot">·</span><span>Καλοκαίρι 2025</span><span class="dot">·</span><span>PSL 6</span>
+          <span>Μακρινίτσα Πηλίου</span><span class="dot" aria-hidden="true">·</span><span>Ιούλιος 2023</span><span class="dot" aria-hidden="true">·</span><span>PSL 5</span>
         </div>
-        <h3>Peira(g)ma — Anthropo-scenes: Restaging Climate Dramas</h3>
-        <p>Τελική δράση οικοδραματουργίας (ecodramaturgy) του 6ου Pelion Summer Lab for Cultural Theory and Experimental Humanities. Δέκα μέρες πειραματισμού με νέους τρόπους σκηνοθεσίας, μαρτυρίας και εμπλοκής με τις κλιματικές πραγματικότητες, βασισμένους στις τεχνικές κοινοτικού θεάτρου της Ντίνας Σταματοπούλου. Λειτούργησα ως σημείο επαφής για τη διεπιστημονική ομάδα και συνδέτικος κρίκος με την τοπική κοινότητα του Νεοχωρίου.</p>
+        <h3><span lang="en">Echo/locations</span> — Diaro(gm)i / Διαρω(γμ)ή</h3>
+        <p>Γεωτοποθετημένος ηχητικός περίπατος στη Μακρινίτσα, μέρος του τελικού πειράματος του 5ου <span lang="en">Pelion Summer Lab</span> με θέμα <span lang="en">Ec/o/ntologies</span>. Ως ομάδα πέντε ατόμων συνθέσαμε μια διαδρομή γύρω από την κεντρική πλατεία και τις ροές του νερού, όπου οι τοπικές αφηγήσεις ακούγονται καθώς περπατάς. Ο τίτλος παίζει με τρεις λέξεις — διά, ροή, ρωγμή — και η διαδρομή ρωτάει πού ακριβώς τελειώνει το τοπικό και πού αρχίζει το παγκόσμιο. Η ηχητική διαδρομή παραμένει ανοιχτή στην εφαρμογή <span lang="en">Echoes</span>.</p>
+        <p>Συμμετείχα και στην οργανωτική επιτροπή του PSL 2023.</p>
         <div class="entry-links">
-          <a href="https://www.pelionsummerlab.net/" target="_blank" rel="noopener">pelionsummerlab.net ↗</a>
+          <a href="https://www.pelionsummerlab.net/diarogmi--deltaiotaalpharhoomicrongammamu942.html" target="_blank" rel="noopener">Diaro(gm)i <span aria-hidden="true">↗</span></a>
+          <a href="https://www.pelionsummerlab.net/ecoontologies-2023-new.html" target="_blank" rel="noopener">PSL 5 — Ec/o/ntologies <span aria-hidden="true">↗</span></a>
+          <a href="https://explore.echoes.xyz/collections/bwrQdmzIXUnVRz1D" target="_blank" rel="noopener">ηχητική διαδρομή <span aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-meta">
+          <span>Μουσείο Πόλης Βόλου</span><span class="dot" aria-hidden="true">·</span><span>Απρίλιος 2025</span><span class="dot" aria-hidden="true">·</span><span>Έκθεση</span>
+        </div>
+        <h3>Ιχνηλατήσεις Πλημμύρας (<span lang="en">Floodmarks</span>)</h3>
+        <p>Διεπιστημονική έκθεση κοινωνικών ανθρωπολόγων, αρχιτεκτόνων, γεωγράφων, καλλιτεχνών και ακτιβιστών στον απόηχο της διπλής πλημμύρας που συγκλόνισε τον Βόλο και τη Θεσσαλία τον Σεπτέμβριο του 2023. Η έκθεση μεταμορφώνεται σε έναν δημόσιο χώρο μαρτυρίας, διαλόγου και προβληματισμού, με βιωματικά εργαστήρια, πολυμεσικά και πολυτροπικά εκθέματα, γεωτοποθετημένο ηχητικό περίπατο και «τοτέμ» πλημμύρας. Διοργάνωση: Τμήμα Ιστορίας, Αρχαιολογίας και Κοινωνικής Ανθρωπολογίας &amp; Τμήμα Αρχιτεκτόνων Παν. Θεσσαλίας, <span lang="en">Pelion Summer Lab for Cultural Theory and Experimental Humanities</span>, Εικαστικός Σύλλογος Βόλου.</p>
+        <div class="entry-links">
+          <a href="https://snfphi.columbia.edu/el/events/floodmarks/" target="_blank" rel="noopener">snfphi.columbia.edu <span aria-hidden="true">↗</span></a>
+          <a href="https://www.facebook.com/photo?fbid=724946242967416&amp;set=pcb.724949019633805" target="_blank" rel="noopener">φωτογραφίες <span aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-meta">
+          <span>Νεοχώρι Πηλίου</span><span class="dot" aria-hidden="true">·</span><span>Καλοκαίρι 2025</span><span class="dot" aria-hidden="true">·</span><span>PSL 6</span>
+        </div>
+        <h3><span lang="en">Peira(g)ma — Anthropo-scenes: Restaging Climate Dramas</span></h3>
+        <p>Πείραμα — δημόσια παρέμβαση με τη μεθοδολογία της οικοδραματουργίας (<span lang="en">ecodramaturgy</span>) του 6ου <span lang="en">Pelion Summer Lab for Cultural Theory and Experimental Humanities</span>, με βάση τις τεχνικές κοινοτικού θεάτρου της Ντίνας Σταματοπούλου.</p>
+        <p>Λειτούργησα ως σημείο επαφής για τη διεπιστημονική ομάδα και συνδετικός κρίκος με την τοπική κοινότητα του Νεοχωρίου.</p>
+
+        <div class="entry-links">
+          <a href="https://www.pelionsummerlab.net/" target="_blank" rel="noopener">pelionsummerlab.net <span aria-hidden="true">↗</span></a>
         </div>
       </article>
 
@@ -441,16 +599,76 @@
       <span class="section-num mono">04</span>
       <h2>Δεξιότητες</h2>
     </div>
-    <div class="skills-list reveal">
-      <div class="skill-row"><span class="sk-name">Εθνογραφική έρευνα</span><span class="sk-tag mono">πεδίο</span></div>
-      <div class="skill-row"><span class="sk-name">Sensory ethnography</span><span class="sk-tag mono">μέθοδος</span></div>
-      <div class="skill-row"><span class="sk-name">Προφορική ιστορία</span><span class="sk-tag mono">μέθοδος</span></div>
-      <div class="skill-row"><span class="sk-name">Σχεδιασμός βιωματικών εργαστηρίων</span><span class="sk-tag mono">παιδαγωγική</span></div>
-      <div class="skill-row"><span class="sk-name">Σύνδεσμος με τοπική κοινότητα</span><span class="sk-tag mono">συνεργασία</span></div>
-      <div class="skill-row"><span class="sk-name">Διαχείριση προϋπολογισμού έργου</span><span class="sk-tag mono">οργάνωση</span></div>
-      <div class="skill-row"><span class="sk-name">Σχεδιασμός κοινωνικών παρεμβάσεων</span><span class="sk-tag mono">στρατηγική</span></div>
-      <div class="skill-row"><span class="sk-name">Διεπιστημονικός συντονισμός</span><span class="sk-tag mono">οργάνωση</span></div>
+    <div class="skill-groups reveal">
+
+      <div class="skill-group">
+        <h3>Έρευνα &amp; ανάλυση</h3>
+        <ul>
+          <li>Σχεδιασμός ποιοτικής έρευνας <span class="en">research design</span></li>
+          <li>Ημι-δομημένες &amp; σε βάθος συνεντεύξεις <span class="en">in-depth interviews</span></li>
+          <li>Focus groups</li>
+          <li>Εθνογραφική παρατήρηση &amp; ανάλυση πεδίου <span class="en">field research</span></li>
+          <li>Ανάλυση ποιοτικών δεδομένων <span class="en">qualitative data analysis</span></li>
+          <li>Προφορική ιστορία &amp; αυτοεθνογραφία</li>
+          <li>Απομαγνητοφώνηση συνεντεύξεων <span class="en">transcription</span></li>
+        </ul>
+      </div>
+
+      <div class="skill-group">
+        <h3>Πεδίο &amp; κοινότητα</h3>
+        <ul>
+          <li>Πρόσβαση σε δύσκολα πεδία και οικοδόμηση εμπιστοσύνης</li>
+          <li>Συνεντεύξεις με ευάλωτες ομάδες</li>
+          <li>Συντονισμός ομάδων &amp; διευκόλυνση <span class="en">facilitation</span></li>
+          <li>Σχεδιασμός βιωματικών εργαστηρίων</li>
+          <li>Σύνδεσμος με τοπικές κοινότητες</li>
+        </ul>
+      </div>
+
+      <div class="skill-group">
+        <h3>Δεοντολογία &amp; δεδομένα</h3>
+        <ul>
+          <li>Ενημερωμένη συναίνεση <span class="en">informed consent</span></li>
+          <li>Ανωνυμοποίηση &amp; ασφαλής διαχείριση δεδομένων πεδίου</li>
+          <li>Δεοντολογία έρευνας με ευάλωτους πληθυσμούς</li>
+          <li>Προστασία προσωπικών δεδομένων <span class="en">GDPR</span></li>
+        </ul>
+      </div>
+
+      <div class="skill-group">
+        <h3>Παραγωγή &amp; συντονισμός</h3>
+        <ul>
+          <li>Συγγραφή αναφορών &amp; παραδοτέων</li>
+          <li>Διαχείριση προϋπολογισμού έργου</li>
+          <li>Διεπιστημονικός συντονισμός</li>
+          <li>Παραγωγή &amp; επεξεργασία ήχου <span class="en">podcast</span></li>
+          <li>Φωτογραφία ως ερευνητικό εργαλείο</li>
+          <li>Πολυμεσικά &amp; πολυτροπικά εκθέματα</li>
+        </ul>
+      </div>
+
+      <div class="skill-group">
+        <h3>Γλώσσες</h3>
+        <ul>
+          <li>Ελληνικά — μητρική</li>
+          <li>Αγγλικά — <span class="en">C2</span></li>
+        </ul>
+      </div>
+
+      <div class="skill-group">
+        <h3>Εργαλεία</h3>
+        <ul>
+          <li>Audacity <span class="en">επεξεργασία ήχου</span></li>
+          <li>Zotero <span class="en">βιβλιογραφία</span></li>
+          <li>Canva <span class="en">οπτικό υλικό</span></li>
+          <li>Echoes <span class="en">γεωτοποθετημένες ηχητικές διαδρομές</span></li>
+          <li>Notion <span class="en">οργάνωση έρευνας &amp; έργων</span></li>
+          <li>Microsoft Office</li>
+        </ul>
+      </div>
+
     </div>
+
   </section>
 
   <section id="contact">
@@ -458,8 +676,14 @@
       <h2>Επικοινωνία</h2>
       <p>Ανοιχτή σε συνεργασίες γύρω από την κοινωνική έρευνα, την προστασία ευάλωτων ομάδων και τη δημόσια ανθρωπολογία.</p>
       <div class="contact-links">
-        <a href="mailto:dimitramorou@gmail.com">dimitramorou@gmail.com</a>
-        <a href="#">LinkedIn ↗</a>
+
+        <a href="mailto:dimitramorosou@gmail.com">dimitramorosou@gmail.com</a>
+
+      
+        <a href="https://www.linkedin.com/in/TO-PROFIL-SOU/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
+
+                <a href="cv.pdf" download>Βιογραφικό (PDF)</a>
+
       </div>
     </div>
   </section>
@@ -467,34 +691,49 @@
 </main>
 
 <footer>
-  Δήμητρα Μοροσού — Κοινωνική Ανθρωπολόγος · 2026
+  Δήμητρα Μοροσού — Κοινωνική Ανθρωπολόγος · <span id="year">2026</span>
 </footer>
 
 <script>
-  // scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, {threshold:0.12});
-  revealEls.forEach(el=>io.observe(el));
+  // Εμφάνιση ενοτήτων καθώς κατεβαίνεις (με σεβασμό στη ρύθμιση «λιγότερη κίνηση»)
+  var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var revealEls = document.querySelectorAll('.reveal');
 
-  // river draw-on-scroll
-  const path = document.getElementById('riverPath');
-  if(path){
-    const len = path.getTotalLength();
+  if (calm || !('IntersectionObserver' in window)) {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(function(el){ io.observe(el); });
+  }
+
+  // Το ποτάμι «γράφεται» καθώς σκρολάρεις
+  var path = document.getElementById('riverPath');
+  if (path && !calm) {
+    var len = path.getTotalLength();
     path.style.strokeDasharray = len;
     path.style.strokeDashoffset = len;
+    var ticking = false;
     function updateRiver(){
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = Math.min(1, Math.max(0, scrollTop / docHeight));
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var progress = docHeight > 0 ? Math.min(1, Math.max(0, window.scrollY / docHeight)) : 1;
       path.style.strokeDashoffset = len * (1 - progress);
+      ticking = false;
     }
-    window.addEventListener('scroll', updateRiver);
+    function onScroll(){
+      if (!ticking) { ticking = true; window.requestAnimationFrame(updateRiver); }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
     updateRiver();
   }
+
+  // Η χρονιά στο υποσέλιδο ανανεώνεται μόνη της
+  var y = document.getElementById('year');
+  if (y) { y.textContent = new Date().getFullYear(); }
 </script>
 
 </body>
